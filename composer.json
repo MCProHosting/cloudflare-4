@@ -1,0 +1,26 @@
+{
+    "name": "mcprohosting/cloudflare-4",
+    "description": "PHP package for the next generation CloudFlare API",
+    "license": "MIT",
+    "keywords": ["cloudflare", "api", "wrapper"],
+    "authors": [
+        {
+            "name": "Connor Peet",
+            "email": "connor@peet.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mcprohosting\\CloudFlare\\": "src/Mcprohosting/CloudFlare/"
+        }
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "guzzlehttp/guzzle": "~4.1",
+        "illuminate/support": "~4.2"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "3.7.*"
+    }
+}
