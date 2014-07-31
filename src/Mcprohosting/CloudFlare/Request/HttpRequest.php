@@ -108,6 +108,14 @@ class HttpRequest implements RequestInterface
         return $this->request('patch', $route, ['body' => $parameters]);
     }
 
+    /**
+     * Runs a request against the CF API, adding appropriate auth details to the options.
+     *
+     * @param string $method
+     * @param string $route
+     * @param array  $options
+     * @return GuzzleResponse
+     */
     protected function request($method, $route, $options)
     {
         $url = rtrim($this->baseUrl, '/') . '/' . ltrim($route, '/');

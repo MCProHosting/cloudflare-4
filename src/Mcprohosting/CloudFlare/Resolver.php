@@ -97,6 +97,14 @@ class Resolver
         ]
     ];
 
+    /**
+     * Parses the given method and arguments for submission to the CloudFlare API.
+     *
+     * @param string $method
+     * @param array  $arguments
+     * @return array
+     * @throws \BadMethodCallException
+     */
     public function resolve($method, $arguments)
     {
         if (!array_key_exists($method, $this->routes)) {
