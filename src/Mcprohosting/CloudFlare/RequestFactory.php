@@ -37,9 +37,9 @@ class RequestFactory
     {
         $request = new HttpRequest(new Client, new Resolver);
 
-        $request->setEmail($this->authEmail)
-                ->setKey($this->authKey)
-                ->setBaseUrl($this->baseUrl);
+        $request->setEmail($this->authEmail);
+        $request->setKey($this->authKey);
+        $request->setBaseUrl($this->baseUrl);
 
         return $request;
     }
