@@ -26,7 +26,7 @@ class RequestFactory
      *
      * @var string
      */
-    public $baseUrl = 'https://api.cloudflare.com/v4/';
+    public $baseUrl = 'https://api.cloudflare.com/client/v4/';
 
     /**
      * Creates a new HttpRequest.
@@ -80,4 +80,4 @@ class RequestFactory
 
         return call_user_func_array(array($request, $method), $arguments);
     }
-} 
+}
