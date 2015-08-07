@@ -90,22 +90,22 @@ class HttpRequest implements RequestInterface
 
     public function post($route, $parameters = [])
     {
-        return $this->request('post', $route, ['body' => $parameters]);
+        return $this->request('post', $route, ['json' => $parameters]);
     }
 
     public function delete($route, $parameters = [])
     {
-        return $this->request('delete', $route, ['body' => $parameters]);
+        return $this->request('delete', $route, ['json' => $parameters]);
     }
 
     public function put($route, $parameters = [])
     {
-        return $this->request('put', $route, ['body' => $parameters]);
+        return $this->request('put', $route, ['json' => $parameters]);
     }
 
     public function patch($route, $parameters = [])
     {
-        return $this->request('patch', $route, ['body' => $parameters]);
+        return $this->request('patch', $route, ['json' => $parameters]);
     }
 
     /**
