@@ -20,7 +20,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
             'headers' => [
                 'X-Auth-Key' => 'FooKey',
                 'X-Auth-Email' => 'FooEmail'
-            ], 'body' => 'bar'
+            ], 'json' => 'bar'
         ])->andReturn($request);
         $client->shouldReceive('send')->with($request)->andReturn($response);
 
@@ -43,4 +43,4 @@ class RequestTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(['a' => 'b'], $r->getData());
         $this->assertEquals('b', $r->a);
     }
-} 
+}
