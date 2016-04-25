@@ -14,15 +14,15 @@ class RequestTest extends PHPUnit_Framework_TestCase
             "messages": []
         }', true));
 
-        $request = Mockery::mock('GuzzleHttp\Message\RequestInterface');
+        $req = Mockery::mock('Psr\Http\Message\RequestInterface');
         $client = Mockery::mock('GuzzleHttp\ClientInterface');
         $client->shouldReceive('createRequest')->with('post', 'SomeUrl/aRoute', [
             'headers' => [
                 'X-Auth-Key' => 'FooKey',
                 'X-Auth-Email' => 'FooEmail'
             ], 'json' => 'bar'
-        ])->andReturn($request);
-        $client->shouldReceive('send')->with($request)->andReturn($response);
+        ])->andReturn($req);
+        $client->shouldReceive('send')->with($req)->andReturn($response);
 
         $resolver = Mockery::mock('Mcprohosting\CloudFlare\Resolver');
         $resolver->shouldReceive('resolve')->with('someMethod', [])->andReturn([
