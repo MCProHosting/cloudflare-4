@@ -2,7 +2,7 @@
 
 namespace Mcprohosting\CloudFlare\Response;
 
-use GuzzleHttp\Message\ResponseInterface as GuzzleResponseInterface;
+use GuzzleHttp\Psr7\Response as Resp;
 
 class GuzzleResponse implements ResponseInterface
 {
@@ -13,9 +13,9 @@ class GuzzleResponse implements ResponseInterface
      */
     protected $data;
 
-    function __construct(GuzzleResponseInterface $response)
+    function __construct(Resp $response)
     {
-        $this->data = $response->json();
+        $this->data = json_decode($response->getBody(), true);
     }
 
     public function __get($property)
