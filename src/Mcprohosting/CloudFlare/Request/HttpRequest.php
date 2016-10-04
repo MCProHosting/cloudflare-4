@@ -120,14 +120,14 @@ class HttpRequest implements RequestInterface
     {
         $url = rtrim($this->baseUrl, '/') . '/' . ltrim($route, '/');
 
-        $request = $this->client->createRequest($method, $url, $options + [
+        $r = $this->client->request($method, $url, $options + [
             'headers' => [
                 'X-Auth-Key' => $this->authKey,
                 'X-Auth-Email' => $this->authEmail
             ]
         ]);
 
-        return new GuzzleResponse($this->client->send($request));
+        return new GuzzleResponse($r);
     }
 
     public function __call($method, $arguments)

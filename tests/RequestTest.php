@@ -6,23 +6,22 @@ class RequestTest extends PHPUnit_Framework_TestCase
 {
     public function testFactory()
     {
-        $response = Mockery::mock('GuzzleHttp\Message\ResponseInterface');
-        $response->shouldReceive('json')->andReturn(json_decode('{
+        $response = Mockery::mock('GuzzleHttp\Psr7\Response');
+        $response->shouldReceive('getBody')->andReturn('{
             "result": {"a": "b"},
             "success": false,
             "errors": [{"code":1003,"message":"Invalid or missing zone id."}],
             "messages": []
-        }', true));
+        }');
 
-        $request = Mockery::mock('GuzzleHttp\Message\RequestInterface');
+        $req = Mockery::mock('Psr\Http\Message\RequestInterface');
         $client = Mockery::mock('GuzzleHttp\ClientInterface');
-        $client->shouldReceive('createRequest')->with('post', 'SomeUrl/aRoute', [
+        $client->shouldReceive('request')->with('post', 'SomeUrl/aRoute', [
             'headers' => [
                 'X-Auth-Key' => 'FooKey',
                 'X-Auth-Email' => 'FooEmail'
             ], 'json' => 'bar'
-        ])->andReturn($request);
-        $client->shouldReceive('send')->with($request)->andReturn($response);
+        ])->andReturn($response);
 
         $resolver = Mockery::mock('Mcprohosting\CloudFlare\Resolver');
         $resolver->shouldReceive('resolve')->with('someMethod', [])->andReturn([
